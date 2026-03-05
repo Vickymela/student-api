@@ -38,18 +38,25 @@ def delete_student(request,id:int):
     if not student:
         raise HttpError(404,"this user does not exist")
     
-@main_api.put("update_student/{id}/",response=CreateStudentSchema)
-def update_student(request,student:CreateStudentSchema): 
-    existing_student= Student.objects.filter(id=id).first()
+
+    
+
+@main_api.put("students/{student_id}/", response=CreateStudentSchema)
+def update_student(request, student_id: int, student: CreateStudentSchema): 
+
+    existing_student = Student.objects.filter(id=student_id).first()
+
     if not existing_student:
-         raise HttpError(400,"student not found")
-    existing_student.username= student.username,
-    if existing_student:
-        existing_student.email=student.email,
-        existing_student.year=student.year,
-        existing_student.course=student.course,
-        existing_student.save()
-        return existing_student
+        raise HttpError(404, "Student not found")
+
+    existing_student.username = student.username
+    existing_student.email = student.email
+    existing_student.year = student.year
+    existing_student.course = student.course
+
+    existing_student.save()
+
+    return existing_student
 
 
       
