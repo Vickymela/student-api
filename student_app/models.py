@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 class Student(models.Model):
     username = models.CharField(max_length=50)
@@ -8,4 +9,4 @@ class Student(models.Model):
     course = models.CharField( max_length=50)
 
     def __str__(self):
-        return f"{self.name} - {self.email}"
+        return f"{self.username} - {self.email}"
