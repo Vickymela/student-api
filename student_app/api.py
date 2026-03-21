@@ -64,7 +64,7 @@ def creatStudent(request,student:CreateStudentSchema):
         new_student.save()
         return new_student
 
-# this is not working omo
+# this is not working omogi
 @main_api.get("getstudent/{id}/",response=CreateStudentSchema,auth=django_auth)
 @csrf_exempt
 def get_student(request,id:int):
